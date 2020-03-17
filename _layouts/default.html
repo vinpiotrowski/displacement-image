@@ -3,15 +3,16 @@
   <link rel="apple-touch-icon" type="image/png" href="https://static.codepen.io/assets/favicon/apple-touch-icon-5ae1a0698dcc2402e9712f7d01ed509a57814f994c660df9f7a952f3060705ee.png">
   <meta name="robots" content="noindex">
   <title>Displacement Map</title>
+  <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
   <style media="" data-href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video{margin:0;padding:0;border:0;font-size:100%;font:inherit;vertical-align:baseline}article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}table{border-collapse:collapse;border-spacing:0}</style>
   <style>
-    @import url("https://fonts.googleapis.com/css?family=Playfair+Display:400,700,900");
     #gl {
       width: 77vw;
       height: 91vh;
       left: 50%;
       top: 50%;
       position: absolute;
+      pointer-events: none;
       transform: translate(-50%, -50%);
     }
 
@@ -20,12 +21,14 @@
       height: 100vh;
       background: #000000;
       overflow: hidden;
+      font-family: 'Roboto', sans-serif;
     }
 
     .frame {
       box-sizing: border-box;
       width: 90vw;
       height: 90vh;
+        pointer-events: none;
       position: absolute;
       top: 0;
       left: 0;
@@ -36,18 +39,46 @@
       display: block;
     }
 
+    .menu {
+      background: #333333;
+      border-radius: 14px;
+      padding: 1vw 4vw;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+    }
+
     h1 {
       color: #efefef;
-      font-family: "Playfair Display";
       font-weight: 400;
-      font-size: 12vw;
-      position: absolute;
-      top: 50%;
+      font-size: 3.5vw;
       letter-spacing: 3px;
-      left: 50%;
+      line-height: 2;
       width: 100vw;
       text-align: center;
-      transform: translateX(-50%) translateY(-50%);
+    }
+
+    ul, li {
+      padding: 0;
+      margin: 0;
+      width: 100%;
+    }
+
+    li a {
+      color: #fff;
+      display: inline-block;
+      font-size: 2vw;
+      font-weight: 100;
+      letter-spacing: 3px;
+      list-style: none;
+      padding: 1vw;
+      text-decoration: none;
+      width: 100%;
+    }
+
+    li a:hover {
+      text-decoration: underline;
     }
   </style>
   <script>
@@ -61,7 +92,9 @@
   </script>
 </head>
 <body translate="no">
-<div id="gl" data-imageoriginal="./images/valard-people.jpg" data-imagedepth="./images/valard-people-depth.png" data-horizontalthreshold="35" data-verticalthreshold="28">
+{{ content }}
+
+<div id="gl" data-imageoriginal="{{ page.image }}" data-imagedepth="{{ page.depth }}" data-horizontalthreshold="35" data-verticalthreshold="28">
 </div>
 <div class="frame">
 </div>
